@@ -19,9 +19,8 @@ const getArrayOfRandomObjects = (lenght) => {
             let y = getRandomSalary(1000, 5000);
             employeesArray.push({fullname: x, salary: y});
     } 
-    // console.log (employeesArray);
     return employeesArray;   
-}
+};
 
 const sortArrayToSalary = (key = 'asc') => {
     let arr = getArrayOfRandomObjects(10)
@@ -32,5 +31,26 @@ const sortArrayToSalary = (key = 'asc') => {
         arr.sort((a, b) => {return b.salary - a.salary});
         console.log (arr);
     }
+};
+
+
+
+
+const print = () => {
+    let x = getArrayOfRandomObjects(12);
+    let temp;
+    let res;
+    for (let i = 0; i < x.length; i++) {
+        temp = x[i];
+        res = temp.join();
+    }
+    console.log(res);
+    return res;
 }
-sortArrayToSalary ();
+
+print();
+
+
+//.join('')
+
+
