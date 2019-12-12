@@ -7,3 +7,30 @@ const firstName = ['Anthony', 'James', 'Aidan', 'Jackson', 'David', 'Mason', 'Lo
 const lastName = ['Abramson', 'Gilson', 'Goodman', 'Hawkins', 'Gill', 'Gilbert', 'Fraser', 'Foster', 'Ford', 
 'Fitzgerald', 'Adams', 'Fisher', 'Faber', 'Elmers', 'Eddington', 'Newton', 'Bach', 'Beethowen', 'Donaldson', 'Trump', 
 'Obama', 'Putin', 'Creighton', 'Bond', 'Willis', 'Travolta', 'Tarantino', 'Roberts', 'Franklin', 'Karrey', 'Archibald'];
+
+const getRandomFullName = () => `${firstName[Math.floor(Math.random() * firstName.length)]} ${lastName[Math.floor(Math.random() * lastName.length)]}`;
+
+const getRandomSalary = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+const getArrayOfRandomObjects = (lenght) => {
+    let employeesArray = []; 
+        for (let i = 0; i < lenght; i++) {
+            let x = getRandomFullName();
+            let y = getRandomSalary(1000, 5000);
+            employeesArray.push({fullname: x, salary: y});
+    } 
+    // console.log (employeesArray);
+    return employeesArray;   
+}
+
+const sortArrayToSalary = (key = 'asc') => {
+    let arr = getArrayOfRandomObjects(10)
+        if (key == 'asc') {
+        arr.sort((a, b) => {return a.salary - b.salary});
+        console.log (arr);
+    } else if (key == 'desc'){
+        arr.sort((a, b) => {return b.salary - a.salary});
+        console.log (arr);
+    }
+}
+sortArrayToSalary ();
