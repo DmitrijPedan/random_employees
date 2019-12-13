@@ -33,24 +33,27 @@ const sortArrayToSalary = (key = 'asc') => {
     }
 };
 
-
-
-
-const print = () => {
-    let x = getArrayOfRandomObjects(12);
-    let temp;
-    let res;
-    for (let i = 0; i < x.length; i++) {
-        temp = x[i];
-        res = temp.join();
+const alertArrayOfObjects = (obj) => {
+    let temp = [];
+    let str = '';
+    for (let i = 0; i < obj.length ; i++) {
+        temp.push(`${obj[i].fullname} salary: ${obj[i].salary}$`);
+        str += `${temp[i]}\n`;
     }
-    console.log(res);
-    return res;
+    alert(str);
+    return str;
 }
 
-print();
+x = getArrayOfRandomObjects(10);
+alertArrayOfObjects(x);
 
 
-//.join('')
+
+
+
+
+
+
+
 
 
