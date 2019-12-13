@@ -22,15 +22,15 @@ const getArrayOfRandomObjects = (lenght) => {
     return employeesArray;   
 };
 
-const sortArrayToSalary = (key = 'asc') => {
-    let arr = getArrayOfRandomObjects(10)
-        if (key == 'asc') {
-        arr.sort((a, b) => {return a.salary - b.salary});
-        console.log (arr);
-    } else if (key == 'desc'){
-        arr.sort((a, b) => {return b.salary - a.salary});
-        console.log (arr);
+const sortArrayToSalary = (obj, key) => {
+    if (key == 1) {
+        obj.sort((a, b) => {return a.salary - b.salary});
+    } else if (key == 2){
+        obj.sort((a, b) => {return b.salary - a.salary});
+    } else {
+        alert('Неверный ключ. Массив не отсортирован');
     }
+    return obj;
 };
 
 const alertArrayOfObjects = (obj) => {
@@ -44,11 +44,10 @@ const alertArrayOfObjects = (obj) => {
     return str;
 }
 
-x = getArrayOfRandomObjects(10);
-alertArrayOfObjects(x);
-
-
-
+let x = getArrayOfRandomObjects(prompt('Введите количество сотрудников'));
+let y = sortArrayToSalary(x, prompt('Введите ключ сортировки (1-ask, 2-desk)'));
+let z = alertArrayOfObjects(y);
+history.back();
 
 
 
