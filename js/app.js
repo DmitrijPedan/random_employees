@@ -7,7 +7,7 @@ const createHTMLNode = (tag, attrs, inner) => {
                 element.innerHTML=inner
                 :null;
     return element;
-}
+};
 
 const getHeader = () => {
     const h3 = createHTMLNode ('h3', [], 'Массив случайных сотрудников');
@@ -16,7 +16,7 @@ const getHeader = () => {
     const container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
     const header = createHTMLNode ('header', [], [container]);
     document.getElementById('app').appendChild(header);
-}
+};
 
 const getFooter = () => {
     const span = createHTMLNode ('span', [], `&#169 dmitrijpedan.github.io, ${new Date ().getFullYear()}`);
@@ -25,7 +25,7 @@ const getFooter = () => {
     const container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
     const footer = createHTMLNode ('footer', [], [container]);
     document.getElementById('app').appendChild(footer);
-}
+};
 
 const getSelectSection = () => {
     const col = createHTMLNode ('div', [{name: 'class', value:['col']}], [
@@ -49,7 +49,7 @@ const getSelectSection = () => {
     const container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
     const section = createHTMLNode ('section', [], [container]);
     document.getElementById('app').appendChild(section);
-}
+};
 
 const getTableSection = () => {
     const col = createHTMLNode ('div', [{name: 'class', value:['col']}, {name: 'id', value:['output']}], null);
@@ -57,7 +57,7 @@ const getTableSection = () => {
     const container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
     const section = createHTMLNode ('section', [], [container]);
     document.getElementById('app').appendChild(section);
-}
+};
 
 const firstName = ['Anthony', 'James', 'Aidan', 'Jackson', 'David', 'Mason', 'Logan', 'Alexander', 'Charles', 
 'Bryan', 'Angel', 'Tyler', 'Isaac', 'John', 'Nathaniel', 'Samuel', 'Austin', 'Luis', 'Benjamin', 'Gabriel', 
@@ -87,14 +87,14 @@ const getAmountStaff = () => {
     let count = document.getElementById('inputStuff').value;
     count = +count && +count > 0 && +count <= 1000 ? result = Number(count) : alert('Проверьте количество сотрудников');
     return result;
-}
+};
 
 const getMinSalary = () => {
     let result = 0;
     let min = document.getElementById('minSalary').value;
     min = +min && +min >= 100 && +min < 50000 ? result = Number(min) : alert('Проверьте Min зарплату');
     return result; 
-}
+};
 
 const getMaxSalary = () => {
     let result = 0;
@@ -102,7 +102,7 @@ const getMaxSalary = () => {
     let max = document.getElementById('maxSalary').value;
     max = +max && +max > 100 && +max <= 10000 && max > min ? result = Number(max) : alert('Проверьте Max зарплату');
     return result;
-}
+};
 
 const sortArrayToSalary = (obj) => {
     let key = Number(document.getElementById('inputSort').value);
@@ -132,7 +132,7 @@ const outputDataToTable = (arr) => {
     outTable.appendChild(outTbody);
     document.getElementById ('output-table') ? document.getElementById ('output-table').remove() : null;
     document.getElementById('output').appendChild(outTable);
-}
+};
 
 const renderOutput = () => {
     let count = getAmountStaff();
@@ -147,10 +147,10 @@ const renderOutput = () => {
  
 const clearData = () => window.location.reload();
 
-getHeader()
-getSelectSection()
-getTableSection()
-getFooter()
+getHeader();
+getSelectSection();
+getTableSection();
+getFooter();
 
 toTable.onclick = renderOutput;
 clearPage.onclick = clearData;
