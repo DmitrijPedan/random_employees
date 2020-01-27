@@ -30,11 +30,11 @@ const getFooter = () => {
 const getSelectSection = () => {
     const col = createHTMLNode ('div', [{name: 'class', value:['col']}], [
         createHTMLNode ('label', [{name: 'for', value:['inputStuff']}], 'Количество сотрудников:'),
-        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['inputStuff']}, {name: 'placeholder', value:['от 1 до 500']}], null),
+        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['inputStuff']}, {name: 'placeholder', value:['от 1 до 500']}, {name: 'min', value:['1']}, {name: 'max', value:['500']}], null),
         createHTMLNode ('label', [{name: 'for', value:['minSalary']}], 'Зарплата от:'),
-        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['minSalary']}, {name: 'placeholder', value:['от 1000 $']}], null),
+        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['minSalary']}, {name: 'placeholder', value:['от 1000 $']}, {name: 'min', value:['1000']}, {name: 'max', value:['9999']}], null),
         createHTMLNode ('label', [{name: 'for', value:['maxSalary']}], 'Зарплата до:'),
-        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['maxSalary']}, {name: 'placeholder', value:['до 10 000 $']}], null),
+        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['maxSalary']}, {name: 'placeholder', value:['до 10 000 $']}, {name: 'min', value:['1001']}, {name: 'max', value:['10000']}], null),
         createHTMLNode ('label', [{name: 'for', value:['inputSort']}], 'Сортировка по зарплате:'),
         createHTMLNode ('select', [{name: 'class', value:['form-control']}, {name: 'id', value:['inputSort']}], [
             createHTMLNode ('option', [{name: 'value', value:['0']}], 'Не сортировать'),
