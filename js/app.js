@@ -10,31 +10,31 @@ const createHTMLNode = (tag, attrs, inner) => {
 }
 
 const getHeader = () => {
-    let h3 = createHTMLNode ('h3', [], 'Массив случайных сотрудников');
-    let col = createHTMLNode ('div', [{name: 'class', value:['col']}], [h3])
-    let row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
-    let container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
-    let header = createHTMLNode ('header', [], [container]);
+    const h3 = createHTMLNode ('h3', [], 'Массив случайных сотрудников');
+    const col = createHTMLNode ('div', [{name: 'class', value:['col']}], [h3])
+    const row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
+    const container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
+    const header = createHTMLNode ('header', [], [container]);
     document.getElementById('app').appendChild(header);
 }
 
 const getFooter = () => {
-    let span = createHTMLNode ('span', [], `&#169 dmitrijpedan.github.io, ${new Date ().getFullYear()}`);
-    let col = createHTMLNode ('div', [{name: 'class', value:['col']}], [span])
-    let row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
-    let container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
-    let footer = createHTMLNode ('footer', [], [container]);
+    const span = createHTMLNode ('span', [], `&#169 dmitrijpedan.github.io, ${new Date ().getFullYear()}`);
+    const col = createHTMLNode ('div', [{name: 'class', value:['col']}], [span])
+    const row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
+    const container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
+    const footer = createHTMLNode ('footer', [], [container]);
     document.getElementById('app').appendChild(footer);
 }
 
 const getSelectSection = () => {
-    let col = createHTMLNode ('div', [{name: 'class', value:['col']}], [
+    const col = createHTMLNode ('div', [{name: 'class', value:['col']}], [
         createHTMLNode ('label', [{name: 'for', value:['inputStuff']}], 'Количество сотрудников:'),
         createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['inputStuff']}, {name: 'placeholder', value:['от 1 до 500']}], null),
         createHTMLNode ('label', [{name: 'for', value:['minSalary']}], 'Зарплата от:'),
-        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['minSalary']}, {name: 'placeholder', value:['от 100 $']}], null),
+        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['minSalary']}, {name: 'placeholder', value:['от 1000 $']}], null),
         createHTMLNode ('label', [{name: 'for', value:['maxSalary']}], 'Зарплата до:'),
-        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['maxSalary']}, {name: 'placeholder', value:['до 50 000 $']}], null),
+        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['maxSalary']}, {name: 'placeholder', value:['до 10 000 $']}], null),
         createHTMLNode ('label', [{name: 'for', value:['inputSort']}], 'Сортировка по зарплате:'),
         createHTMLNode ('select', [{name: 'class', value:['form-control']}, {name: 'id', value:['inputSort']}], [
             createHTMLNode ('option', [{name: 'value', value:['0']}], 'Не сортировать'),
@@ -42,26 +42,22 @@ const getSelectSection = () => {
             createHTMLNode ('option', [{name: 'value', value:['2']}], 'По убыванию'),
         ]),
         createHTMLNode ('button', [{name: 'id', value:['toTable']}, {name: 'type', value:['submit']}, {name: 'class', value:['btn', 'btn-info']}, {name: 'style', value:['margin: 20px;']}], 'В таблицу'),
+        createHTMLNode ('button', [{name: 'id', value:['clearPage']}, {name: 'type', value:['submit']}, {name: 'class', value:['btn', 'btn-danger']}, {name: 'style', value:['margin: 20px;']}], 'Очистить'),
         
     ]);
-    let row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
-    let container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
-    let section = createHTMLNode ('section', [], [container]);
+    const row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
+    const container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
+    const section = createHTMLNode ('section', [], [container]);
     document.getElementById('app').appendChild(section);
 }
 
 const getTableSection = () => {
-    let col = createHTMLNode ('div', [{name: 'class', value:['col']}, {name: 'id', value:['output']}], null);
-    let row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
-    let container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
-    let section = createHTMLNode ('section', [], [container]);
+    const col = createHTMLNode ('div', [{name: 'class', value:['col']}, {name: 'id', value:['output']}], null);
+    const row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
+    const container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
+    const section = createHTMLNode ('section', [], [container]);
     document.getElementById('app').appendChild(section);
 }
-
-getHeader()
-getSelectSection()
-getTableSection()
-getFooter()
 
 const firstName = ['Anthony', 'James', 'Aidan', 'Jackson', 'David', 'Mason', 'Logan', 'Alexander', 'Charles', 
 'Bryan', 'Angel', 'Tyler', 'Isaac', 'John', 'Nathaniel', 'Samuel', 'Austin', 'Luis', 'Benjamin', 'Gabriel', 
@@ -79,32 +75,33 @@ const getRandomSalary = (min, max) => Math.floor(Math.random() * (max - min + 1)
 const getArrayOfRandomObjects = (lenght, min, max) => {
     let employeesArray = []; 
         for (let i = 0; i < lenght; i++) {
-            let x = getRandomFullName();
-            let y = getRandomSalary(min, max);
-            employeesArray.push({fullname: x, salary: y});
+            let name = getRandomFullName();
+            let sal = getRandomSalary(min, max);
+            employeesArray.push({fullname: name, salary: sal});
     } 
     return employeesArray;   
 };
 
 const getAmountStaff = () => {
+    let result = 0;
     let count = document.getElementById('inputStuff').value;
-    count = +count && +count > 0 && +count <= 500 ? count : alert('Проверьте количество сотрудников');
-    console.log('getAmountStaff:', Number(count))
-    return Number(count)
+    count = +count && +count > 0 && +count <= 1000 ? result = Number(count) : alert('Проверьте количество сотрудников');
+    return result;
 }
 
 const getMinSalary = () => {
+    let result = 0;
     let min = document.getElementById('minSalary').value;
-    min = +min && +min >= 100 && +min < 50000 ? min : alert('Проверьте Min зарплату');
-    console.log('get Min Salary:', Number(min))
-    return Number(min);
+    min = +min && +min >= 100 && +min < 50000 ? result = Number(min) : alert('Проверьте Min зарплату');
+    return result; 
 }
 
 const getMaxSalary = () => {
+    let result = 0;
+    let min = document.getElementById('minSalary').value;
     let max = document.getElementById('maxSalary').value;
-    max = +max && +max > 100 && +max <= 50000 ? max : alert('Проверьте Max зарплату');
-    console.log('get Max Salary:', Number(max))
-    return Number(max);
+    max = +max && +max > 100 && +max <= 10000 && max > min ? result = Number(max) : alert('Проверьте Max зарплату');
+    return result;
 }
 
 const sortArrayToSalary = (obj) => {
@@ -117,38 +114,46 @@ const sortArrayToSalary = (obj) => {
     return obj;
 };
 
-
-
-function outputDataToTable (arr) {
-const columns = ['Номер', 'Полное имя', 'Зарплата'];
-const outTheadTr = createHTMLNode ('tr', [], null);
-columns.map(el => outTheadTr.appendChild(createHTMLNode ('th', [{name: 'scope', value: ['col']}], el)));
-const outThead = createHTMLNode ('thead', [], null);
-outThead.appendChild(outTheadTr);
-const outTbody = createHTMLNode ('tbody', [], null); //tbody tr td
-arr.map((el, ind) => {
-  const outTbodyTr = createHTMLNode('tr',[],null);
-  outTbodyTr.appendChild(createHTMLNode('td', [], ind+1))
-  Object.keys(el).map(elName => outTbodyTr.appendChild(createHTMLNode('td', [], el[elName])))
-  outTbody.appendChild(outTbodyTr);
-})
-const outTable = createHTMLNode ('table', [{name: 'class', value: ['table']}, {name: 'id', value: ['output-table']}], null); // table
-outTable.appendChild(outThead);
-outTable.appendChild(outTbody);
-document.getElementById ('output-table') ? document.getElementById ('output-table').remove() : null;
-document.getElementById('output').appendChild(outTable);
+const outputDataToTable = (arr) => {
+    const columns = ['Номер', 'Полное имя', 'Зарплата'];
+    const outTheadTr = createHTMLNode ('tr', [], null);
+    columns.map(el => outTheadTr.appendChild(createHTMLNode ('th', [{name: 'scope', value: ['col']}], el)));
+    const outThead = createHTMLNode ('thead', [], null);
+    outThead.appendChild(outTheadTr);
+    const outTbody = createHTMLNode ('tbody', [], null);
+    arr.map((el, ind) => {
+        const outTbodyTr = createHTMLNode('tr',[],null);
+        outTbodyTr.appendChild(createHTMLNode('td', [], ind+1))
+        Object.keys(el).map(elName => outTbodyTr.appendChild(createHTMLNode('td', [], el[elName])))
+        outTbody.appendChild(outTbodyTr);
+        })
+    const outTable = createHTMLNode ('table', [{name: 'class', value: ['table']}, {name: 'id', value: ['output-table']}], null); // table
+    outTable.appendChild(outThead);
+    outTable.appendChild(outTbody);
+    document.getElementById ('output-table') ? document.getElementById ('output-table').remove() : null;
+    document.getElementById('output').appendChild(outTable);
 }
-
-
 
 const renderOutput = () => {
-    let sortedAray = sortArrayToSalary(getArrayOfRandomObjects(getAmountStaff(), getMinSalary(), getMaxSalary()))
-    console.log('outputDataToTable2:', sortedAray)
-    outputDataToTable(sortedAray)
+    let count = getAmountStaff();
+    let min = getMinSalary();
+    let max = getMaxSalary();
+    if (count > 0 && min > 0 && max > 0) {
+        let sortedAray = sortArrayToSalary(getArrayOfRandomObjects(count, min, max))
+    outputDataToTable(sortedAray) 
+    }
+    return
 }
+ 
+const clearData = () => window.location.reload();
 
+getHeader()
+getSelectSection()
+getTableSection()
+getFooter()
 
 toTable.onclick = renderOutput;
+clearPage.onclick = clearData;
 
 
 
