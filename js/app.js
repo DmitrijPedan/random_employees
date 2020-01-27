@@ -44,11 +44,81 @@ const alertArrayOfObjects = (obj) => {
     return str;
 }
 
-let x = getArrayOfRandomObjects(prompt('Введите количество сотрудников'));
-let y = sortArrayToSalary(x, prompt('Введите ключ сортировки (1-ask, 2-desk)'));
-let z = alertArrayOfObjects(y);
-history.back();
+const createHTMLNode = (tag, attrs, inner) => {
+    const element = document.createElement(tag);
+    attrs.map(attr => {element.setAttribute(attr.name, attr.value.join(' '))});
+    inner
+        ?
+            Array.isArray(inner) ? inner.map(el => element.appendChild(el)):
+                element.innerHTML=inner
+                :null;
+    return element;
+}
 
+
+
+const getHeader = () => {
+    let h3 = createHTMLNode ('h3', [], 'Массив случайных сотрудников');
+    let col = createHTMLNode ('div', [{name: 'class', value:['col']}], [h3])
+    let row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
+    let container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
+    let header = createHTMLNode ('header', [], [container]);
+    document.getElementById('app').appendChild(header);
+}
+
+const getFooter = () => {
+    let span = createHTMLNode ('span', [], `&#169 dmitrijpedan.github.io, ${new Date ().getFullYear()}`);
+    let col = createHTMLNode ('div', [{name: 'class', value:['col']}], [span])
+    let row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
+    let container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
+    let footer = createHTMLNode ('footer', [], [container]);
+    document.getElementById('app').appendChild(footer);
+}
+
+const getSelectSection = () => {
+    let col = createHTMLNode ('div', [{name: 'class', value:['col']}], [
+        createHTMLNode ('label', [{name: 'for', value:['inputStuff']}], 'Количество сотрудников:'),
+        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['inputStuff']}], null),
+        createHTMLNode ('label', [{name: 'for', value:['minSalary']}], 'Зарплата от:'),
+        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['minSalary']}], null),
+        createHTMLNode ('label', [{name: 'for', value:['maxSalary']}], 'Зарплата до:'),
+        createHTMLNode ('input', [{name: 'type', value:['number']}, {name: 'class', value:['form-control']}, {name: 'id', value:['maxSalary']}], null),
+        createHTMLNode ('label', [{name: 'for', value:['inputSort']}], 'Сортировка по зарплате:'),
+        createHTMLNode ('select', [{name: 'class', value:['form-control']}, {name: 'id', value:['inputSort']}], [
+            createHTMLNode ('option', [{name: 'value', value:['0']}], 'Не сортировать'),
+            createHTMLNode ('option', [{name: 'value', value:['1']}], 'По возрастанию'),
+            createHTMLNode ('option', [{name: 'value', value:['2']}], 'По убыванию'),
+        ]),
+        createHTMLNode ('button', [{name: 'id', value:['toTable']}, {name: 'type', value:['submit']}, {name: 'class', value:['btn', 'btn-info']}, {name: 'style', value:['margin: 20px;']}], 'В таблицу'),
+        
+    ]);
+    let row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
+    let container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
+    let section = createHTMLNode ('section', [], [container]);
+    document.getElementById('app').appendChild(section);
+}
+
+const getTableSection = () => {
+    let col = createHTMLNode ('div', [{name: 'class', value:['col']}, {name: 'id', value:['output']}], null);
+    let row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
+    let container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
+    let section = createHTMLNode ('section', [], [container]);
+    document.getElementById('app').appendChild(section);
+}
+
+
+{/* <section>
+<div class="container">
+    <div class="row" id="output">    
+    </div>
+</div>
+</section> */}
+
+
+getHeader()
+getSelectSection()
+getTableSection()
+getFooter()
 
 
 
