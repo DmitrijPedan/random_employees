@@ -1,11 +1,7 @@
 const createHTMLNode = (tag, attrs, inner) => {
     const element = document.createElement(tag);
-    attrs.map(attr => {element.setAttribute(attr.name, attr.value.join(' '))});
-    inner
-        ?
-            Array.isArray(inner) ? inner.map(el => element.appendChild(el)):
-                element.innerHTML=inner
-                :null;
+    attrs.map(el => {element.setAttribute(el.name, el.value.join(' '))});
+    inner ? (Array.isArray(inner) ? inner.map(el => element.appendChild(el)) : element.innerHTML=inner) : null;
     return element;
 };
 
@@ -73,44 +69,34 @@ const getRandomFullName = () => `${firstName[Math.floor(Math.random() * firstNam
 const getRandomSalary = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 const getArrayOfRandomObjects = (lenght, min, max) => {
-    let employeesArray = []; 
-        for (let i = 0; i < lenght; i++) {
-            let name = getRandomFullName();
-            let sal = getRandomSalary(min, max);
-            employeesArray.push({fullname: name, salary: sal});
-    } 
-    return employeesArray;   
+    return [...new Array(lenght)].map(el => el = {fullname:getRandomFullName(), salary:getRandomSalary(min, max)}) 
 };
 
 const getAmountStaff = () => {
-    let result = 0;
     let count = document.getElementById('inputStuff').value;
-    count = +count && +count > 0 && +count <= 1000 ? result = Number(count) : alert('Проверьте количество сотрудников');
-    return result;
+    return (count == +count && +count > 0 && +count <= 500) ? Number(count) : alert('Проверьте количество сотрудников');
 };
 
 const getMinSalary = () => {
-    let result = 0;
     let min = document.getElementById('minSalary').value;
-    min = +min && +min >= 100 && +min < 50000 ? result = Number(min) : alert('Проверьте Min зарплату');
-    return result; 
+    return (min == +min && +min >= 100 && +min < 50000) ? Number(min) : alert('Проверьте Min зарплату');
 };
 
 const getMaxSalary = () => {
-    let result = 0;
     let min = document.getElementById('minSalary').value;
     let max = document.getElementById('maxSalary').value;
-    max = +max && +max > 100 && +max <= 10000 && max > min ? result = Number(max) : alert('Проверьте Max зарплату');
-    return result;
+    return (max == +max && +max > 100 && +max <= 10000 && max > min) ? Number(max) : alert('Проверьте Max зарплату');
 };
 
 const sortArrayToSalary = (obj) => {
-    let key = Number(document.getElementById('inputSort').value);
-    if (key == 1) {
-        obj.sort((a, b) => {return a.salary - b.salary});
-    } else if (key == 2){
-        obj.sort((a, b) => {return b.salary - a.salary});
-    } 
+    switch (Number(document.getElementById('inputSort').value)) {
+        case 1:
+            obj.sort((a, b) => {return a.salary - b.salary});
+            break;
+        case 2:
+            obj.sort((a, b) => {return b.salary - a.salary});
+            break;
+    }
     return obj;
 };
 
@@ -135,25 +121,19 @@ const outputDataToTable = (arr) => {
 };
 
 const renderOutput = () => {
-    let count = getAmountStaff();
-    let min = getMinSalary();
-    let max = getMaxSalary();
-    if (count > 0 && min > 0 && max > 0) {
-        let sortedAray = sortArrayToSalary(getArrayOfRandomObjects(count, min, max))
-    outputDataToTable(sortedAray) 
-    }
-    return
+    const count = getAmountStaff();
+    const min = getMinSalary();
+    const max = getMaxSalary();
+    (count  && min  && max ) && outputDataToTable(sortArrayToSalary(getArrayOfRandomObjects(count, min, max)));
 }
- 
-const clearData = () => window.location.reload();
 
 getHeader();
 getSelectSection();
 getTableSection();
 getFooter();
 
-toTable.onclick = renderOutput;
-clearPage.onclick = clearData;
+document.getElementById('toTable').onclick = renderOutput;
+document.getElementById('clearPage').onclick = () => window.location.reload();
 
 
 
